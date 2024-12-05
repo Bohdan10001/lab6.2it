@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include <limits> 
+
+double calculateAverage(int minValue, int maxValue) {
+    return (minValue + maxValue) / 2.0;
+}
+
+int main() {
+    
+    std::vector<int> numbers = { 12, 45, -10, 7, 0, 99, -3 };
+
+    if (numbers.empty()) {
+        std :: cout << "Масив порожній, обчислення неможливе." << std::endl;
+        return 1;
+    }
+
+    
+    int minElement = std::numeric_limits<int>::max(); 
+    int maxElement = std::numeric_limits<int>::min(); 
+
+    
+    for (int num : numbers) {
+        if (num < minElement) {
+            minElement = num;
+        }
+        if (num > maxElement) {
+            maxElement = num;
+        }
+    }
+
+    
+    double average = calculateAverage(minElement, maxElement);
+
+    // Виведення результату
+    std::cout << "minElement = " << minElement << std::endl;
+    std::cout << "maxElement = " << maxElement << std::endl;
+    std::cout << " average = " << average << std::endl;
+
+    return 0;
+}
